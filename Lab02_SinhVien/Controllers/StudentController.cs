@@ -25,4 +25,17 @@ public class StudentController : Controller
         return View("Index", sinhVien);
     }
 
+
+    public IActionResult ViewStudent(string type)
+    {
+        var student = new Student();
+        if(type == "JSON")
+        {
+            var fullPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", JsonFileName);
+            var jsonString = System.IO.File.ReadAllText(fullPath);
+            student = JsonSerializer.Deserialize<Student>(jsonString);
+        }
+        return View("Index", student);
+    }
+
 }
