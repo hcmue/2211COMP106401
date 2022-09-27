@@ -20,5 +20,25 @@ namespace Demo.Controllers
                 Total = stopWatch.ElapsedMilliseconds
             });
         }
+
+        public async Task<IActionResult> DemoBDD()
+        {
+            var stopWatch = new Stopwatch();
+            stopWatch.Start();
+            var a = DemoSyncAsync.AAsync();
+            var b = DemoSyncAsync.BAsync();
+            var c = DemoSyncAsync.CAsync();
+            await a;
+            await b;
+            await c;
+            Task.WaitAll();
+            stopWatch.Stop();
+
+            return Json(new
+            {
+                Type = "Async",
+                Total = stopWatch.ElapsedMilliseconds
+            });
+        }
     }
 }
