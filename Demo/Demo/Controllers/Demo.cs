@@ -40,5 +40,12 @@ namespace Demo.Controllers
                 Total = stopWatch.ElapsedMilliseconds
             });
         }
+
+        public IActionResult ExtensionMethod()
+        {
+            return Json(new { 
+                SoNgay = DateTime.Now.DemSoNgay(new DateTime(2023, 1, 21))
+            });
+        }
     }
 }

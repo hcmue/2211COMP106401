@@ -1,0 +1,10 @@
+﻿@model Employee
+
+<form asp-action="Create">
+    <div class="form-group">
+        <label asp-for="EmployeeNo"></label>
+        <input asp-for="EmployeeNo" />
+        <span asp-validation-for="EmployeeNo"></span>
+    </div>
+    <button>SAVE</button>
+</form>
