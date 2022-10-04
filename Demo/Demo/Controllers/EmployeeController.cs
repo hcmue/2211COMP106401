@@ -5,6 +5,11 @@ namespace Demo.Controllers
 {
     public class EmployeeController : Controller
     {
+        public IActionResult DangKy()
+        {
+            return View();
+        }
+
         public IActionResult KiemTraMaNhanVienTrung(string EmployeeNo)
         {
             var dsMaDaCo = new string[] {
