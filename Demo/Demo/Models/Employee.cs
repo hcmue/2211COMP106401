@@ -13,6 +13,7 @@ namespace Demo.Models
         public Guid? Id { get; set; }
 
         [Display(Name = "Mã nhân viên")]
+        [KiemTraMaNhanVien(ErrorMessage ="Mã không hợp lệ")]
         public string EmployeeNo { get; set; }
 
         [Display(Name = "Họ tên")]
