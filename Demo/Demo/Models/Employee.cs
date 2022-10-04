@@ -15,7 +15,7 @@ namespace Demo.Models
         [Display(Name = "Mã nhân viên")]
         public string EmployeeNo { get; set; }
 
-        [[Display(Name = "Họ tên")]
+        [Display(Name = "Họ tên")]
         [MinLength(3, ErrorMessage = "Tối thiểu 3 kí tự")]
         [StringLength(100)]
         public string FullName { get; set; }
