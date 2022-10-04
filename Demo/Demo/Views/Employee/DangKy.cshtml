@@ -1,9 +1,8 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "DangKy";
 }
 
-<form>
+<form id="myform" action="DangKy">
     <h2 class="text-center text-danger">
         Đăng ký Thành viên
     </h2>
@@ -82,3 +81,19 @@
         </div>
     </div>
 </form>
+@section Scripts{
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#myform").validate({
+                rules: {
+                    ThongTinThem: {maxlength: 250}
+                },
+                messages: {
+                    ThongTinThem: { maxlength: "Tối đa 250 kí tự" }
+                }
+            });
+        });
+    </script>
+}
