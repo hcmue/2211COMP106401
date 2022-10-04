@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
 using System.Xml.Linq;
 
 namespace Demo.Models
@@ -13,7 +14,8 @@ namespace Demo.Models
         public Guid? Id { get; set; }
 
         [Display(Name = "Mã nhân viên")]
-        [KiemTraMaNhanVien(ErrorMessage ="Mã không hợp lệ")]
+        //[KiemTraMaNhanVien(ErrorMessage ="Mã không hợp lệ")]
+        [Remote(action:"KiemTraMaNhanVienTrung", controller:"Employee", ErrorMessage ="Mã này đã có")]
         public string EmployeeNo { get; set; }
 
         [Display(Name = "Họ tên")]
@@ -31,6 +33,7 @@ namespace Demo.Models
 
         [Display(Name = "Ngày sinh")]
         [DataType(DataType.Date)]
+        [KiemTraNgaySinh]
         public DateTime BirthDate { get; set; }
 
         [Display(Name ="Giới tính")]

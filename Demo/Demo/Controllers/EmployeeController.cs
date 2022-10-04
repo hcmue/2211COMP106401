@@ -5,6 +5,18 @@ namespace Demo.Controllers
 {
     public class EmployeeController : Controller
     {
+        public IActionResult KiemTraMaNhanVienTrung(string EmployeeNo)
+        {
+            var dsMaDaCo = new string[] {
+                "1111", "7777", "admin", "member"
+            };
+            if (dsMaDaCo.Contains(EmployeeNo))
+            {
+                return Json(data: "Mã này đã có");
+            }
+            return Json(data: true);
+        }
+
         public IActionResult Create()
         {
             return View();
