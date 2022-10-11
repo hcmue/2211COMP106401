@@ -5,7 +5,11 @@ using System.Text;
 namespace Demo.Controllers
 {
     public class EmployeeController : Controller
-    {        
+    {    
+        public string KiemTraMaBaoMat(string MaBaoMat)
+        {
+            return HttpContext.Session.GetString("MaBaoMat") == MaBaoMat ? "true": "false";
+        }
 
         public IActionResult DangKy()
         {

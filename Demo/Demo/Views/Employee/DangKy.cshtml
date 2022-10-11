@@ -88,9 +88,11 @@
         $(document).ready(function () {
             $("#myform").validate({
                 rules: {
-                    ThongTinThem: {maxlength: 250}
+                    ThongTinThem: {maxlength: 250},
+                    MaBaoMat: { remote: "/Employee/KiemTraMaBaoMat" }
                 },
                 messages: {
+                    MaBaoMat: {remote: "Sai rùi"},
                     ThongTinThem: { maxlength: "Tối đa 250 kí tự" }
                 }
             });
