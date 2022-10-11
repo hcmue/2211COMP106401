@@ -1,12 +1,19 @@
 ﻿using Demo.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Text;
 
 namespace Demo.Controllers
 {
     public class EmployeeController : Controller
-    {
+    {        
+
         public IActionResult DangKy()
         {
+            var maNgauNhien = MyTools.LayMaBaoMat();
+            //Lưu session
+            HttpContext.Session.SetString("MaBaoMat", maNgauNhien);
+            //Gửi mã bảo mật qua View
+            ViewBag.MaBaoMat = maNgauNhien;
             return View();
         }
 
