@@ -14,3 +14,9 @@ Demo công nghệ NET lớp thứ 3
 	* Tạo đại 1 cái area, ví dụ Admin
 	* Tạo 1 controller, nhớ thêm property [Area("areaName")]
 	* Nhớ tạo các file _ViewImport.cshtml, _ViewStart.cshtml trong thư mục Views của area đó.
+
+* Repository Pattern
+	* Là gì? Tầng DataAccess Layer che giấu việc thao tác data ở tầng business (ở action)
+	* Tạo 1 cặp interface ICategoryReposirory và class MemoryCategoryReposirory
+	* Đăng ký DI: builder.Services.AddScoped<>(ICategoryReposirory, MemoryCategoryReposirory);
+	* Chỗ nào sử dụng thì Inject ở hàm tạo
