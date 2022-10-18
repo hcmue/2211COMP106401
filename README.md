@@ -23,3 +23,13 @@ Demo công nghệ NET lớp thứ 3
 	builder.Services.AddScoped<ICategoryRepository, MemoryCategoryRepository>();
 	```
 	* Chỗ nào sử dụng thì Inject ở hàm tạo
+
+* ViewComponent
+	* Tạo class có postfix là CategoryViewComponent, ví dụ CategoryCategoryViewComponent
+	* Trong class đó phải có method Invoke()
+	* Định nghĩa view để hiển thị cho component đó theo quy định:
+		Views\Shared\Components\<ten_view_component>\Dafault.cshtml
+	* Sử dụng component: 
+	```cs
+	@await Component.InvokeAsync("Category")
+	```
