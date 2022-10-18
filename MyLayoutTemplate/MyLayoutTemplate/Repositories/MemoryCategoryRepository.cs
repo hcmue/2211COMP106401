@@ -2,7 +2,7 @@
 
 namespace MyLayoutTemplate.Repositories
 {
-    public class MemoryCategoryReposirory : ICategoryRepository
+    public class MemoryCategoryRepository : ICategoryRepository
     {
         static List<CategoryModel> _categories = new List<CategoryModel>()
         {

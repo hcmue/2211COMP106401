@@ -18,5 +18,8 @@ Demo công nghệ NET lớp thứ 3
 * Repository Pattern
 	* Là gì? Tầng DataAccess Layer che giấu việc thao tác data ở tầng business (ở action)
 	* Tạo 1 cặp interface ICategoryReposirory và class MemoryCategoryReposirory
-	* Đăng ký DI: builder.Services.AddScoped<>(ICategoryReposirory, MemoryCategoryReposirory);
+	* Đăng ký DI ở Program.cs:
+	```cs
+	builder.Services.AddScoped<ICategoryRepository, MemoryCategoryRepository>();
+	```
 	* Chỗ nào sử dụng thì Inject ở hàm tạo
