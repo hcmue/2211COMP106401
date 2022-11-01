@@ -1,7 +1,11 @@
+using Microsoft.EntityFrameworkCore;
+using MyStore.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<MyeStoreK46Context>(option => option.UseSqlServer(builder.Configuration.GetConnectionString("MyStore")));
 
 var app = builder.Build();
 
