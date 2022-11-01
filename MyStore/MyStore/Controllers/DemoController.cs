@@ -46,5 +46,19 @@ namespace MyStore.Controllers
             }).ToList();
             return View(result);
         }
+
+
+        public IActionResult ThongKe()
+        {
+            var data = _context.ChiTietHds.GroupBy(hh => new { hh.MaHhNavigation.MaLoaiNavigation.TenLoai, hh.MaHhNavigation.MaLoai })
+                .Select(g => new {
+                    TenLoai = g.Key.TenLoai,
+                    MaLoai = g.Key.MaLoai,
+                    DoanhThu = g.Sum(cthd => cthd.SoLuong * cthd.DonGia),
+                    GiaTB = g.Average(cthd => cthd.DonGia)
+                });
+
+            return View();
+        }
     }
 }
