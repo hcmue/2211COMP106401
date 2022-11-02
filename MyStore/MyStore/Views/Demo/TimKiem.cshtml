@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<HangHoaView>
 @{
     ViewData["Title"] = "TimKiem";
 }
@@ -11,3 +11,28 @@
     đến: <input name="To" type="number" />
     <button>Tìm</button>
 </form>
+
+@if (Model != null)
+{
+    <table>
+        <caption>Kết quả</caption>
+        <thead>
+            <tr>
+                <td>ID</td>
+                <td>Hàng hóa</td>
+                <td>Giá</td>
+                <td>Loại</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var item in Model){
+                <tr>
+                    <td>@item.MaHh</td>
+                    <td>@item.TenHh</td>
+                    <td>@item.DonGia</td>
+                    <td>@item.Loai</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

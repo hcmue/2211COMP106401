@@ -40,8 +40,10 @@ namespace MyStore.Controllers
 
             var result = data.Select(hh => new HangHoaView
             {
-                MaHh = hh.MaHh, TenHh = hh.TenHh,
-                DonGia = hh.DonGia, NgaySX = hh.NgaySx,
+                MaHh = hh.MaHh,
+                TenHh = hh.TenHh,
+                DonGia = hh.DonGia,
+                NgaySX = hh.NgaySx,
                 Loai = hh.MaLoaiNavigation.TenLoai
             }).ToList();
             return View(result);
@@ -50,8 +52,13 @@ namespace MyStore.Controllers
 
         public IActionResult ThongKe()
         {
-            var data = _context.ChiTietHds.GroupBy(hh => new { hh.MaHhNavigation.MaLoaiNavigation.TenLoai, hh.MaHhNavigation.MaLoai })
-                .Select(g => new {
+            var data = _context.ChiTietHds.GroupBy(hh => new
+            {
+                hh.MaHhNavigation.MaLoaiNavigation.TenLoai,
+                hh.MaHhNavigation.MaLoai
+            })
+                .Select(g => new
+                {
                     TenLoai = g.Key.TenLoai,
                     MaLoai = g.Key.MaLoai,
                     DoanhThu = g.Sum(cthd => cthd.SoLuong * cthd.DonGia),
