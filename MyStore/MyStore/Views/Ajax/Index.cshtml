@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+<div>
+    Ngày giờ hiện tại:
+    <span class="text-danger" id="dongHo"></span>
+</div>
+
+@section Scripts{
+    <script>        
+        $(function(){
+            function layGioServer() {
+                $.ajax({
+                    url: "/Ajax/GioServer",
+                    type: "post",
+                    success: function (data) {
+                        console.log(data);
+                        $("#dongHo").html(data);
+                    }
+                });
+            }
+            layGioServer();
+            setInterval(layGioServer, 1000);
+        });
+    </script>
+}
