@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewData["Title"] = "AjaxJson";
+}
+
+<h1>AjaxJson</h1>
+
+<div>
+    Từ ngày: <input id="FromDate" />
+    đến ngày: <input id="ToDate" />
+    <button type="button" id="Statictics">Thống kê</button>
+</div>
+<div id="result"></div>
+@section Scripts{
+    <script>
+        $(function(){
+            $("#Statictics").click(function(){
+                $.ajax({
+                    url: "/Ajax/ProductStatictics",
+                    data: {
+                        FromDate: $("#FromDate").val(),
+                        ToDate: $("#ToDate").val(),
+                    },
+                    success: function(response){
+                        let table = $("<table/>");
+                        response.each(item => {
+                            let tr = $("<tr/>");
+                            let td1 = $("<td/>");
+                            td1.html(item).loai;
+                            tr.append(td1);
+                            let td2 = $("<td/>");
+                            td2.html(item).doanhThu;
+                            tr.append(td1)
+                            table.append(tr);
+                        });
+                        $("#result").html(table);
+                    }
+                });
+            });
+        });
+    </script>
+}

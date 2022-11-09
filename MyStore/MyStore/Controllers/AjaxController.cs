@@ -45,5 +45,24 @@ namespace MyStore.Controllers
             return PartialView("HangHoa", data);
         }
         #endregion
+
+
+        #region Ajax JSON
+        public IActionResult AjaxJson()
+        {
+            return View();
+        }
+        public IActionResult ProductStatictics(DateTime FromDate, DateTime ToDate)
+        {
+            var data = _context.ChiTietHds
+                .Where(cthd => cthd.MaHdNavigation.NgayDat >= FromDate && cthd.MaHdNavigation.NgayDat <= ToDate)
+                .GroupBy(p => p.MaHhNavigation.MaLoaiNavigation.TenLoai)
+                .Select(g => new { 
+                    Loai = g.Key,
+                    DoanhThu = g.Sum(cthd => cthd.SoLuong * cthd.DonGia)
+                });
+            return Json(data);
+        }
+        #endregion
     }
 }
