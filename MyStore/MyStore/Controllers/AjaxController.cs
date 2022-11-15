@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using MyStore.Data;
 using MyStore.Models;
 
@@ -48,6 +49,7 @@ namespace MyStore.Controllers
 
 
         #region Ajax JSON
+        [Authorize(Roles ="KeToan")]
         public IActionResult AjaxJson()
         {
             return View();

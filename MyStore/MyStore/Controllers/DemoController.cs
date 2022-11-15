@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using MyStore.Data;
 using MyStore.Models;
 
@@ -50,8 +51,12 @@ namespace MyStore.Controllers
         }
 
 
+        [Authorize]
         public IActionResult ThongKe()
         {
+            //manual check role via code
+            //User.IsInRole("role_name")
+
             var data = _context.ChiTietHds.GroupBy(hh => new
             {
                 hh.MaHhNavigation.MaLoaiNavigation.TenLoai,
@@ -65,7 +70,7 @@ namespace MyStore.Controllers
                     GiaTB = g.Average(cthd => cthd.DonGia)
                 });
 
-            return View();
+            return Json(data);
         }
     }
 }
